@@ -6,7 +6,9 @@
                     <div class="card-header">Example Component</div>
 
                     <div class="card-body">
-                        I'm an example component.
+                        <ul class="products">
+                            <li v-for="product in products" :key="product.id" v-text="product.name"></li>
+                        </ul>
                     </div>
                 </div>
             </div>
@@ -15,9 +17,27 @@
 </template>
 
 <script>
-    export default {
-        mounted() {
-            console.log('Component mounted.')
+import axios from 'axios';
+
+export default {
+    data(){
+        return {
+            products: [],
+        };
+    },
+    methods: {
+        get() {
+            axios.get('/api/products', {
+                params: {
+
+                }
+            }).done(response => {
+                this.products = response.data.products;
+            });
         }
+    },
+    mounted() {
+        // console.log('Component mounted.')
     }
+}
 </script>
