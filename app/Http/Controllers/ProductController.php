@@ -14,7 +14,14 @@ class ProductController extends Controller
      */
     public function index()
     {
-        //
+        $pageLength = request('pageLength');
+        $currentPage = request('currentPage');
+        $skip = ($currentPage - 1) * $pageLength;
+
+        return [
+            'products' => Product::take($pageLength)->skip($skip)->get(),
+            'recordsTotal' => Product::count(),
+        ];
     }
 
     /**

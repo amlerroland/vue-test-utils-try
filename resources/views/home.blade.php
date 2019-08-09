@@ -18,6 +18,9 @@
                 </div>
             </div>
         </div>
+        <div class="col-md-8 mt-5">
+            <example-component></example-component>
+        </div>
     </div>
 </div>
 @endsection

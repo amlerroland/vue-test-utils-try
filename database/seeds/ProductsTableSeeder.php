@@ -16,9 +16,7 @@ class ProductsTableSeeder extends Seeder
         $faker = new Faker;
 
         for ($i = 0; $i < 100; $i++) {
-            factory(Product::class)->create([
-                'name' => 'product' . ($i + 1),
-            ]);
+            factory(Product::class)->create();
         }
     }
 }
